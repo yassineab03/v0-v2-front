@@ -24,22 +24,27 @@ export default function LoginForm() {
     <>
       <style>{`
         .login-form { display: flex; flex-direction: column; gap: 18px; }
-        .form-group { display: flex; flex-direction: column; gap: 6px; }
+        .form-group { display: flex; flex-direction: column; gap: 6px; animation: fadeUp 0.5s ease forwards; }
+        .form-group:nth-child(1) { animation-delay: 0.05s; opacity: 0; }
+        .form-group:nth-child(2) { animation-delay: 0.1s; opacity: 0; }
+        .form-group:nth-child(3) { animation-delay: 0.15s; opacity: 0; }
         .form-label {
           font-size: 13px; font-weight: 600; color: var(--gray-700); letter-spacing: 0.2px;
         }
         .form-input {
           width: 100%; padding: 12px 16px 12px 42px;
-          background: var(--background);
-          border: 1.5px solid var(--border);
+          background: rgba(255, 255, 255, 0.8);
+          border: 1.5px solid rgba(22,163,74,0.15);
           border-radius: var(--radius-lg);
           font-size: 15px; font-family: var(--font-sans); color: var(--foreground);
-          outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+          outline: none; transition: all 0.3s ease;
+          backdrop-filter: blur(8px);
         }
         .form-input::placeholder { color: var(--gray-400); }
         .form-input:focus {
           border-color: var(--green);
-          box-shadow: 0 0 0 3px rgba(22,163,74,0.08);
+          box-shadow: 0 0 0 3px rgba(22,163,74,0.12), 0 0 20px rgba(34,197,94,0.08);
+          background: rgba(255, 255, 255, 0.95);
         }
         .input-wrapper { position: relative; }
         .input-icon {
@@ -71,16 +76,17 @@ export default function LoginForm() {
         .forgot-link:hover { opacity: 0.75; }
         .btn-submit {
           width: 100%; padding: 14px;
-          background: var(--foreground); color: var(--background);
+          background: linear-gradient(135deg, var(--green) 0%, var(--green-light) 100%);
+          color: #fff;
           border: none; border-radius: var(--radius-lg);
           font-size: 15px; font-weight: 700; font-family: var(--font-sans);
-          cursor: pointer; transition: all 0.2s;
+          cursor: pointer; transition: all 0.3s;
           display: flex; align-items: center; justify-content: center; gap: 8px;
+          box-shadow: 0 8px 20px rgba(34,197,94,0.25);
         }
         .btn-submit:hover:not(:disabled) {
-          background: var(--green);
-          transform: translateY(-1px);
-          box-shadow: 0 8px 24px rgba(22,163,74,0.25);
+          transform: translateY(-2px);
+          box-shadow: 0 12px 32px rgba(34,197,94,0.35);
         }
         .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
         .spinner {
@@ -95,17 +101,20 @@ export default function LoginForm() {
           color: var(--gray-400); font-size: 12px; font-family: var(--font-mono);
         }
         .divider::before, .divider::after {
-          content: ''; flex: 1; height: 1px; background: var(--gray-200);
+          content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, transparent 0%, rgba(22,163,74,0.2) 50%, transparent 100%);
         }
         .btn-google {
           width: 100%; padding: 12px;
-          background: var(--background); color: var(--foreground);
-          border: 1.5px solid var(--border); border-radius: var(--radius-lg);
+          background: rgba(255, 255, 255, 0.7);
+          color: var(--foreground);
+          border: 1.5px solid rgba(22,163,74,0.2);
+          border-radius: var(--radius-lg);
           font-size: 14px; font-weight: 600; font-family: var(--font-sans);
-          cursor: pointer; transition: all 0.2s;
+          cursor: pointer; transition: all 0.3s;
           display: flex; align-items: center; justify-content: center; gap: 10px;
+          backdrop-filter: blur(8px);
         }
-        .btn-google:hover { border-color: var(--gray-400); box-shadow: var(--shadow-sm); }
+        .btn-google:hover { border-color: rgba(22,163,74,0.35); box-shadow: 0 4px 16px rgba(34,197,94,0.1); }
       `}</style>
 
       <form className="login-form" onSubmit={handleSubmit}>

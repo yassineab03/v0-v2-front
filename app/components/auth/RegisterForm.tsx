@@ -40,16 +40,18 @@ export default function RegisterForm() {
       <style>{`
         .form-input {
           width: 100%; padding: 12px 16px 12px 42px;
-          background: var(--background);
-          border: 1.5px solid var(--border);
+          background: rgba(255, 255, 255, 0.8);
+          border: 1.5px solid rgba(22,163,74,0.15);
           border-radius: var(--radius-lg);
           font-size: 15px; font-family: var(--font-sans); color: var(--foreground);
-          outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+          outline: none; transition: all 0.3s ease;
+          backdrop-filter: blur(8px);
         }
         .form-input::placeholder { color: var(--gray-400); }
         .form-input:focus {
           border-color: var(--green);
-          box-shadow: 0 0 0 3px rgba(22,163,74,0.08);
+          box-shadow: 0 0 0 3px rgba(22,163,74,0.12), 0 0 20px rgba(34,197,94,0.08);
+          background: rgba(255, 255, 255, 0.95);
         }
         .input-wrapper { position: relative; }
         .input-icon {
@@ -75,14 +77,15 @@ export default function RegisterForm() {
         .strength-label { font-size: 11px; font-family: var(--font-mono); font-weight: 600; margin-top: 4px; }
         .role-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
         .role-btn {
-          padding: 10px 12px; background: var(--background);
-          border: 1.5px solid var(--border); border-radius: var(--radius-lg);
+          padding: 10px 12px; background: rgba(255, 255, 255, 0.6);
+          border: 1.5px solid rgba(22,163,74,0.15); border-radius: var(--radius-lg);
           font-size: 13px; font-weight: 600; font-family: var(--font-sans);
-          color: var(--gray-600); cursor: pointer; transition: all 0.15s;
+          color: var(--gray-600); cursor: pointer; transition: all 0.3s;
           text-align: left; display: flex; align-items: center; gap: 8px;
+          backdrop-filter: blur(8px);
         }
-        .role-btn:hover { border-color: var(--gray-400); color: var(--foreground); }
-        .role-btn.selected { border-color: var(--green); background: var(--green-pale); color: var(--green); }
+        .role-btn:hover { border-color: rgba(22,163,74,0.25); background: rgba(255, 255, 255, 0.75); color: var(--foreground); }
+        .role-btn.selected { border-color: var(--green); background: rgba(34, 197, 94, 0.1); color: var(--green); box-shadow: 0 4px 12px rgba(34, 197, 94, 0.1); }
         .role-icon {
           width: 24px; height: 24px; border-radius: 6px;
           display: flex; align-items: center; justify-content: center;
@@ -97,16 +100,17 @@ export default function RegisterForm() {
         .terms-link { color: var(--green); font-weight: 600; text-decoration: none; }
         .btn-submit {
           width: 100%; padding: 14px;
-          background: var(--foreground); color: var(--background);
+          background: linear-gradient(135deg, var(--green) 0%, var(--green-light) 100%);
+          color: #fff;
           border: none; border-radius: var(--radius-lg);
           font-size: 15px; font-weight: 700; font-family: var(--font-sans);
-          cursor: pointer; transition: all 0.2s;
+          cursor: pointer; transition: all 0.3s;
           display: flex; align-items: center; justify-content: center; gap: 8px;
+          box-shadow: 0 8px 20px rgba(34,197,94,0.25);
         }
         .btn-submit:hover:not(:disabled) {
-          background: var(--green);
-          transform: translateY(-1px);
-          box-shadow: 0 8px 24px rgba(22,163,74,0.25);
+          transform: translateY(-2px);
+          box-shadow: 0 12px 32px rgba(34,197,94,0.35);
         }
         .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
         .spinner {

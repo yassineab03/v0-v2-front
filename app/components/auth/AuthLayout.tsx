@@ -25,7 +25,7 @@ export default function AuthLayout({ children, mode, onToggle }: AuthLayoutProps
         .auth-form-col {
           display: flex; flex-direction: column;
           justify-content: center; align-items: center;
-          padding: 48px 40px; background: var(--background); position: relative;
+          padding: 48px 40px; background: linear-gradient(135deg, var(--background) 0%, rgba(240, 253, 244, 0.5) 100%); position: relative;
           overflow: hidden;
         }
         .auth-form-col::before {
@@ -33,8 +33,8 @@ export default function AuthLayout({ children, mode, onToggle }: AuthLayoutProps
           position: absolute;
           inset: 0;
           background-image: 
-            linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px);
+            linear-gradient(rgba(22,163,74,0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(22,163,74,0.03) 1px, transparent 1px);
           background-size: 60px 60px;
           mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
           -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
@@ -43,14 +43,15 @@ export default function AuthLayout({ children, mode, onToggle }: AuthLayoutProps
         .auth-form-col::after {
           content: '';
           position: absolute;
-          top: -150px;
+          top: -200px;
           left: 50%;
           transform: translateX(-50%);
-          width: 600px;
-          height: 400px;
-          background: radial-gradient(ellipse at center, var(--green-pale) 0%, transparent 60%);
+          width: 800px;
+          height: 600px;
+          background: radial-gradient(ellipse at center, rgba(34, 197, 94, 0.1) 0%, transparent 60%);
           pointer-events: none;
-          opacity: 0.6;
+          opacity: 0.8;
+          filter: blur(60px);
         }
         .auth-form-topbar {
           position: absolute; top: 24px; right: 28px;
@@ -58,8 +59,12 @@ export default function AuthLayout({ children, mode, onToggle }: AuthLayoutProps
         }
         .auth-form-inner {
           width: 100%; max-width: 420px;
-          animation: fadeUp 0.5s ease forwards;
+          animation: fadeUp 0.6s ease forwards;
           position: relative; z-index: 10;
+        }
+        .login-form, .register-form {
+          animation: fadeUp 0.6s ease 0.1s forwards;
+          opacity: 0;
         }
         .auth-eyebrow {
           font-family: var(--font-mono); font-size: 11px; font-weight: 700;

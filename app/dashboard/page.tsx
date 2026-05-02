@@ -66,7 +66,12 @@ function criticitéLabel(c: number) { return c >= 10 ? "badge-red" : c >= 6 ? "b
 // ── Sub-components ────────────────────────────────────────────────────────────
 function StatCard({ label, value, sub, accent }: { label: string; value: string | number; sub?: string; accent?: string }) {
   return (
-    <div className={`${styles.statCard} ${accent ? styles[accent] : ""}`}>
+    <div className={`${styles.statCard} ${accent ? styles[accent] : ""}`} style={{
+      background: "rgba(255, 255, 255, 0.7)",
+      backdropFilter: "blur(12px)",
+      border: "1px solid rgba(22, 163, 74, 0.15)",
+      boxShadow: "0 8px 32px rgba(0, 0, 0, 0.06)"
+    }}>
       <p className={styles.statLabel}>{label}</p>
       <p className={styles.statValue}>{value}</p>
       {sub && <p className={styles.statSub}>{sub}</p>}
@@ -93,14 +98,28 @@ function AIBrainPanel() {
     setTimeout(() => { setRunning(false); setDone(true); }, 2800);
   };
   return (
-    <div className={styles.aiPanel}>
+    <div className={styles.aiPanel} style={{
+      background: "rgba(9, 9, 11, 0.95)",
+      backdropFilter: "blur(20px)",
+      border: "1px solid rgba(34, 197, 94, 0.25)",
+      boxShadow: "0 8px 32px rgba(34, 197, 94, 0.08)"
+    }}>
       <div className={styles.aiPanelHeader}>
-        <div className={styles.aiIconWrap}><span className={styles.aiIcon}>✦</span></div>
+        <div className={styles.aiIconWrap} style={{
+          background: "rgba(34, 197, 94, 0.15)",
+          border: "1px solid rgba(34, 197, 94, 0.3)",
+          boxShadow: "0 0 20px rgba(34, 197, 94, 0.1)"
+        }}><span className={styles.aiIcon}>✦</span></div>
         <div>
           <h3 className={styles.aiTitle}>Assistant IA — Gemini</h3>
           <p className={styles.aiSub}>Analyse CDC · M3</p>
         </div>
-        <button className={styles.aiRunBtn} onClick={handleRun} disabled={running}>
+        <button className={styles.aiRunBtn} onClick={handleRun} disabled={running}
+          style={{
+            background: running ? "rgba(34, 197, 94, 0.15)" : "rgba(34, 197, 94, 0.1)",
+            border: "1px solid rgba(34, 197, 94, 0.3)",
+            boxShadow: "0 0 12px rgba(34, 197, 94, 0.05)"
+          }}>
           {running ? "Analyse…" : "Analyser CDC"}
         </button>
       </div>
@@ -154,14 +173,27 @@ function KanbanBoard() {
       {cols.map(col => {
         const colTickets = tickets.filter(t => t.statut === col.key);
         return (
-          <div key={col.key} className={styles.kanbanCol}>
+          <div key={col.key} className={styles.kanbanCol} style={{
+            background: "rgba(255, 255, 255, 0.6)",
+            backdropFilter: "blur(12px)",
+            border: "1px solid rgba(22, 163, 74, 0.1)"
+          }}>
             <div className={styles.kanbanColHeader}>
               <span className={styles.kanbanColLabel}>{col.label}</span>
-              <span className={styles.kanbanCount}>{colTickets.length}</span>
+              <span className={styles.kanbanCount} style={{
+                background: "rgba(22, 163, 74, 0.15)",
+                border: "1px solid rgba(22, 163, 74, 0.2)"
+              }}>{colTickets.length}</span>
             </div>
             <div className={styles.kanbanCards}>
               {colTickets.map(t => (
-                <div key={t.refTicket} className={`${styles.kanbanCard} hover-lift`} style={{ opacity: col.key === "Done" ? 0.7 : 1 }}>
+                <div key={t.refTicket} className={`${styles.kanbanCard} hover-lift`} style={{
+                  background: "rgba(255, 255, 255, 0.85)",
+                  backdropFilter: "blur(12px)",
+                  border: "1px solid rgba(22, 163, 74, 0.12)",
+                  boxShadow: "0 4px 16px rgba(0, 0, 0, 0.04)",
+                  opacity: col.key === "Done" ? 0.7 : 1
+                }}>
                   <div className={styles.kanbanCardTop}>
                     <Badge text={t.type} cls={ticketTypeColors[t.type]} />
                     <Badge text={t.priorite} cls={ticketPrioColors[t.priorite]} />
@@ -265,7 +297,12 @@ export default function DashboardPage() {
               <h2 className={styles.sectionTitle}>Projets</h2>
               <div className={styles.projectsList}>
                 {PROJECTS.map(p => (
-                  <div key={p.refProjet} className={`${styles.projectCard} hover-lift ${activeProject.refProjet === p.refProjet ? styles.selected : ""}`} onClick={() => setActiveProject(p)}>
+                  <div key={p.refProjet} className={`${styles.projectCard} hover-lift ${activeProject.refProjet === p.refProjet ? styles.selected : ""}`} onClick={() => setActiveProject(p)} style={{
+                    background: "rgba(255, 255, 255, 0.7)",
+                    backdropFilter: "blur(12px)",
+                    border: activeProject.refProjet === p.refProjet ? "1px solid rgba(22, 163, 74, 0.4)" : "1px solid rgba(22, 163, 74, 0.1)",
+                    boxShadow: activeProject.refProjet === p.refProjet ? "0 8px 32px rgba(34, 197, 94, 0.12)" : "0 4px 16px rgba(0, 0, 0, 0.04)"
+                  }}>
                     <div className={styles.projectCardTop}>
                       <div>
                         <div className={styles.projectRef}>{p.refProjet}</div>
@@ -289,7 +326,12 @@ export default function DashboardPage() {
               <AIBrainPanel />
               <section className={styles.section}>
                 <h2 className={styles.sectionTitle}>Livrables — {activeProject.nom}</h2>
-                <div className={styles.deliverablesList}>
+                <div className={styles.deliverablesList} style={{
+                  background: "rgba(255, 255, 255, 0.7)",
+                  backdropFilter: "blur(12px)",
+                  border: "1px solid rgba(22, 163, 74, 0.1)",
+                  boxShadow: "0 4px 16px rgba(0, 0, 0, 0.04)"
+                }}>
                   {DELIVERABLES.map(d => (
                     <div key={d.refLivrable} className={styles.deliverableRow}>
                       <div><p className={styles.delivName}>{d.nom}</p><p className={styles.delivDate}>{d.datePrevue}</p></div>
@@ -320,7 +362,12 @@ export default function DashboardPage() {
         {activeTab === "risks" && (
           <div className={styles.tabContent}>
             <h2 className={styles.sectionTitle}>Registre des Risques</h2>
-            <div className={styles.risksTable}>
+            <div className={styles.risksTable} style={{
+              background: "rgba(255, 255, 255, 0.7)",
+              backdropFilter: "blur(12px)",
+              border: "1px solid rgba(22, 163, 74, 0.1)",
+              boxShadow: "0 4px 16px rgba(0, 0, 0, 0.04)"
+            }}>
               <div className={styles.tableHeader}><span>Réf.</span><span>Description</span><span>P</span><span>I</span><span>Criticité</span><span>Statut</span></div>
               {RISKS.sort((a, b) => b.criticite - a.criticite).map(r => (
                 <div key={r.refRisque} className={styles.tableRow}>
@@ -345,7 +392,12 @@ export default function DashboardPage() {
                 const ecart = p.budgetPrevu - p.budgetReel;
                 const pct = Math.round((p.budgetReel / p.budgetPrevu) * 100);
                 return (
-                  <div key={p.refProjet} className={styles.costCard}>
+                  <div key={p.refProjet} className={styles.costCard} style={{
+                    background: "rgba(255, 255, 255, 0.7)",
+                    backdropFilter: "blur(12px)",
+                    border: "1px solid rgba(22, 163, 74, 0.1)",
+                    boxShadow: "0 4px 16px rgba(0, 0, 0, 0.04)"
+                  }}>
                     <div className={styles.costCardHeader}><span className={styles.costName}>{p.nom}</span><Badge text={p.statut} cls={statusColors[p.statut]} /></div>
                     <div className={styles.costRow}><span className={styles.costLabel}>Prévu</span><span className={styles.costVal}>{p.budgetPrevu.toLocaleString("fr-FR")} €</span></div>
                     <div className={styles.costRow}><span className={styles.costLabel}>Réel</span><span className={styles.costVal}>{p.budgetReel.toLocaleString("fr-FR")} €</span></div>
