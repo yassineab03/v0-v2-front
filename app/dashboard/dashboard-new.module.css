@@ -1,0 +1,118 @@
+.dashboardContainer {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--background) 0%, rgba(240, 253, 244, 0.3) 100%);
+  padding-top: 70px;
+}
+
+.dashboardContent {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* Layout presets for different card placements */
+.gridContainer > :nth-child(1) {
+  grid-column: span 2;
+  animation-delay: 0.05s;
+}
+
+.gridContainer > :nth-child(2) {
+  grid-column: span 1;
+  animation-delay: 0.1s;
+}
+
+.gridContainer > :nth-child(3) {
+  grid-column: span 2;
+  animation-delay: 0.15s;
+}
+
+.gridContainer > :nth-child(4) {
+  grid-column: span 1;
+  animation-delay: 0.2s;
+}
+
+.gridContainer > :nth-child(5) {
+  grid-column: span 1;
+  animation-delay: 0.25s;
+}
+
+.gridContainer > :nth-child(6) {
+  grid-column: span 1;
+  animation-delay: 0.3s;
+}
+
+.gridContainer > :nth-child(7) {
+  grid-column: span 2;
+  animation-delay: 0.35s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1200px) {
+  .dashboardContent {
+    padding: 1.5rem;
+  }
+
+  .gridContainer > :nth-child(1) {
+    grid-column: span 1;
+  }
+
+  .gridContainer > :nth-child(3) {
+    grid-column: span 1;
+  }
+
+  .gridContainer > :nth-child(7) {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboardContainer {
+    padding-top: 60px;
+  }
+
+  .dashboardContent {
+    padding: 1rem;
+  }
+
+  .gridContainer {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .gridContainer > * {
+    grid-column: span 1 !important;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(22, 163, 74, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(22, 163, 74, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(22, 163, 74, 0.5);
+}

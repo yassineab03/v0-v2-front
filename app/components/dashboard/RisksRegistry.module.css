@@ -1,0 +1,148 @@
+.risksList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.riskItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(22, 163, 74, 0.1);
+  border-left: 4px solid;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.riskItem:hover {
+  background: rgba(255, 255, 255, 0.8);
+  transform: translateX(4px);
+  box-shadow: 0 8px 20px rgba(34, 197, 94, 0.1);
+}
+
+.criticalitycritical {
+  border-left-color: #ef4444;
+  background: rgba(239, 68, 68, 0.04);
+}
+
+.criticalityhigh {
+  border-left-color: #f59e0b;
+  background: rgba(245, 158, 11, 0.04);
+}
+
+.criticalitymedium {
+  border-left-color: #22c55e;
+  background: rgba(34, 197, 94, 0.04);
+}
+
+.riskMain {
+  flex: 1;
+}
+
+.riskHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.riskDescription {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--foreground);
+}
+
+.riskScore {
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+}
+
+.scorecritical {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+}
+
+.scorehigh {
+  background: rgba(245, 158, 11, 0.15);
+  color: #f59e0b;
+}
+
+.scoremedium {
+  background: rgba(34, 197, 94, 0.15);
+  color: var(--green);
+}
+
+.riskMetrics {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.metricBadge {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  padding: 0.3rem 0.6rem;
+  background: rgba(22, 163, 74, 0.08);
+  border-radius: 4px;
+}
+
+.metricLabel {
+  font-weight: 700;
+  color: var(--gray-600);
+}
+
+.metricVal {
+  font-weight: 700;
+  color: var(--green);
+}
+
+.statusBadge {
+  font-size: 1.3rem;
+}
+
+.statusidentified {
+  opacity: 0.8;
+}
+
+.statusongoing {
+  animation: pulse 2s infinite;
+}
+
+.statusmitigated {
+  opacity: 1;
+}
+
+.statusclosed {
+  opacity: 0.6;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@media (max-width: 768px) {
+  .riskItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .riskHeader {
+    width: 100%;
+  }
+
+  .statusBadge {
+    align-self: flex-end;
+  }
+}

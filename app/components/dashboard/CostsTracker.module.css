@@ -1,0 +1,213 @@
+.costsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.summaryCard {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.05) 0%, rgba(34, 197, 94, 0.02) 100%);
+  border: 1px solid rgba(22, 163, 74, 0.12);
+  border-radius: 12px;
+  animation: fadeInUp 0.6s ease;
+}
+
+.summaryItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.summaryLabel {
+  font-size: 0.75rem;
+  color: var(--gray-500);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.summaryValue {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+.utilGood {
+  color: var(--green);
+}
+
+.utilWarn {
+  color: #f59e0b;
+}
+
+.utilOver {
+  color: #ef4444;
+}
+
+.summaryDivider {
+  display: none;
+  width: 1px;
+  height: 40px;
+  background: rgba(22, 163, 74, 0.1);
+}
+
+.costsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.costItem {
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(22, 163, 74, 0.1);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  animation: slideUp 0.4s ease forwards;
+}
+
+.costItem:hover {
+  background: rgba(255, 255, 255, 0.8);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(34, 197, 94, 0.1);
+}
+
+.statuson-track {
+  border-left: 3px solid var(--green);
+}
+
+.statuswarning {
+  border-left: 3px solid #f59e0b;
+}
+
+.statusover {
+  border-left: 3px solid #ef4444;
+}
+
+.costHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.costName {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--foreground);
+}
+
+.costStatus {
+  font-size: 1.2rem;
+}
+
+.costProgress {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.progressBar {
+  flex: 1;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  transition: width 0.4s ease;
+  border-radius: 4px;
+}
+
+.progressPercent {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--foreground);
+  min-width: 40px;
+  text-align: right;
+}
+
+.costMetrics {
+  display: flex;
+  gap: 1rem;
+}
+
+.metric {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(22, 163, 74, 0.08);
+  border-radius: 8px;
+}
+
+.metricLabel {
+  font-size: 0.7rem;
+  color: var(--gray-500);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.metricValue {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--green);
+}
+
+.metricValue.negative {
+  color: #ef4444;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1024px) {
+  .summaryCard {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .summaryCard .summaryItem:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .costMetrics {
+    flex-direction: column;
+  }
+
+  .metric {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
